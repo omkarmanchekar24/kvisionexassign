@@ -9,13 +9,30 @@ import {
 } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Modal, {SlideAnimation, ModalContent} from 'react-native-modals';
 
 //Components
 import Card from './common/Card';
+import Filter from './Filter';
 
 class Products extends Component {
+  state = {visible: false};
+
   renderItem = ({item}) => {
     return <Card product={item.product} description={item.description} />;
+  };
+
+  showFilter = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  hideFilter = () => {
+    this.setState({
+      visible: false,
+    });
+    return true;
   };
 
   render() {
@@ -47,7 +64,7 @@ class Products extends Component {
               <Text style={styles.headerTitle}>Products Listed</Text>
             </View>
             <View style={styles.headerColumn2}>
-              <Icon name="filter-alt" size={25} />
+              <Icon name="filter-alt" size={25} onPress={this.showFilter} />
             </View>
           </View>
           <View style={styles.body}>
@@ -63,6 +80,21 @@ class Products extends Component {
         <TouchableOpacity style={styles.buttonAdd} onPress={() => {}}>
           <Icon name="add" size={30} color="#fff" />
         </TouchableOpacity>
+        <Modal
+          visible={this.state.visible}
+          modalAnimation={
+            new SlideAnimation({
+              slideFrom: 'bottom',
+            })
+          }
+          rounded={false}
+          onDismiss={this.hideFilter}
+          onTouchOutside={this.hideFilter}
+          onHardwareBackPress={this.hideFilter}>
+          <ModalContent>
+            <Filter onRemovePress={this.hideFilter} />
+          </ModalContent>
+        </Modal>
       </>
     );
   }

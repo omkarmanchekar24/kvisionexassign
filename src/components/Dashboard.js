@@ -20,7 +20,12 @@ class Dashboard extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Image source={menu} style={styles.icon} />
+          <TouchableOpacity
+            onPress={() => {
+              console.log('pressed');
+            }}>
+            <Image source={menu} style={styles.icon} />
+          </TouchableOpacity>
           <Image source={profile} style={styles.icon} />
         </View>
         <View style={styles.body}>

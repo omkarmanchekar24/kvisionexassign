@@ -1,10 +1,9 @@
 /* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {View, StyleSheet, StatusBar, Text} from 'react-native';
+import {View, StyleSheet, LogBox} from 'react-native';
 import Router from './src/Router';
 
-import SignIn from './src/components/SignIn';
-
+LogBox.ignoreAllLogs();
 class App extends Component {
   render() {
     return (
