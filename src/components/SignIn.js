@@ -1,5 +1,8 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {Text, StyleSheet, View, Dimensions} from 'react-native';
+import {Actions} from 'react-native-router-flux';
 
 //Components
 import Input from './common/Input';
@@ -23,6 +26,7 @@ class SignIn extends Component {
             buttonContainerStyle={styles.loginButton}
             buttonTextStyle={styles.loginText}
             text="Login"
+            onPress={() => Actions.welcome()}
           />
           <View
             style={{flexDirection: 'row', alignSelf: 'center', marginTop: 10}}>
@@ -44,6 +48,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ABDC55',
     justifyContent: 'space-between',
+    width: Dimensions.get('window').width,
   },
   text: {
     color: '#fff',

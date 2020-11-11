@@ -1,15 +1,15 @@
+/* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, StatusBar, ScrollView} from 'react-native';
+import {View, StyleSheet, StatusBar, Text} from 'react-native';
+import Router from './src/Router';
 
-//Components
 import SignIn from './src/components/SignIn';
 
 class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <SignIn />
-        <StatusBar barStyle="default" />
+        <Router />
       </View>
     );
   }
